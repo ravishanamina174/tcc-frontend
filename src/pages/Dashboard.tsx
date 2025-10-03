@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Locate } from "lucide-react";
 import ParkingCard from "@/components/cards/ParkingCard";
+import MaharagamaCard from "@/components/cards/MaharagamaCard";
 import LiveLocationMap from "@/components/LiveLocationMap";
 import { parkingCenters, type ParkingCenter } from "@/lib/parkingData";
 
@@ -49,9 +50,13 @@ export default function Dashboard() {
       <section className="mt-8">
         <h2 className="text-xl font-semibold">Spots Near You</h2>
         <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((c) => (
-            <ParkingCard key={c.id} center={c} />
-          ))}
+          {list.map((c) => {
+            // Use special MaharagamaCard for Maharagama, regular ParkingCard for others
+            if (c.id === "1") {
+              return <MaharagamaCard key={c.id} />;
+            }
+            return <ParkingCard key={c.id} center={c} />;
+          })}
         </div>
       </section>
     </div>

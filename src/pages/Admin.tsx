@@ -18,6 +18,7 @@ import {
   Clock,
   BarChart3
 } from "lucide-react";
+import FirebaseTestPanel from "@/components/FirebaseTestPanel";
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 interface Slot {
@@ -199,6 +200,16 @@ export default function Admin() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-4">
+        {/* Firebase Test Panel */}
+        <Card className="lg:col-span-1">
+          <CardHeader>
+            <h3 className="text-lg font-semibold">Firebase Test</h3>
+          </CardHeader>
+          <CardContent>
+            <FirebaseTestPanel />
+          </CardContent>
+        </Card>
+
         {/* Tools Panel */}
         <Card className="lg:col-span-1">
           <CardHeader>
@@ -336,7 +347,7 @@ export default function Admin() {
         </Card>
 
         {/* Canvas */}
-        <Card className="lg:col-span-3">
+        <Card className="lg:col-span-2">
           <CardHeader>
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Layout Canvas</h3>

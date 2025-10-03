@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import Settings from "./pages/Settings";
 import Admin from "./pages/Admin";
 import SpotDetails from "./pages/SpotDetails";
+import MaharagamaDetails from "./pages/MaharagamaDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MyReservations from "./pages/MyReservations";
@@ -72,6 +73,7 @@ const App = () => (
                   <MyReservations />
                 </ProtectedRoute>
               } />
+              <Route path="/spots/maharagama" element={<MaharagamaDetails />} />
               <Route path="/spots/:id" element={<SpotDetails />} />
               
               {/* Admin-only routes */}

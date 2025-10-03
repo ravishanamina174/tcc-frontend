@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Clock, Building2, CheckCircle, Send, AlertCircle } from "lucide-react";
-import { feedbackApi, CreateFeedbackRequest } from "@/lib/api";
 import { toast } from "sonner";
 
 interface FormData {
@@ -39,30 +38,21 @@ export default function Contact() {
     setError(null);
     
     try {
-      const feedbackData: CreateFeedbackRequest = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim()
-      };
-
-      const response = await feedbackApi.create(feedbackData);
+      // Simulate form submission (no backend API)
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      if (response.success) {
-        setIsSubmitted(true);
-        toast.success("Message sent successfully!", {
-          description: "Thank you for your feedback. We'll get back to you soon!"
-        });
-        
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: "", email: "", message: "" });
-        }, 3000);
-      } else {
-        throw new Error(response.message || 'Failed to send message');
-      }
+      setIsSubmitted(true);
+      toast.success("Message sent successfully!", {
+        description: "Thank you for your feedback. We'll get back to you soon!"
+      });
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", message: "" });
+      }, 3000);
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
+      const errorMessage = 'Failed to send message. Please try again.';
       setError(errorMessage);
       toast.error("Failed to send message", {
         description: errorMessage
