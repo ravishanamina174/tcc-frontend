@@ -1,0 +1,1 @@
+cd parknet-smarter-cities && npm run dev
